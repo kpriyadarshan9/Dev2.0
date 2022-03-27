@@ -1,5 +1,6 @@
 CREATE OR REPLACE PACKAGE COMMON_TYPE
 AS
+  -- Created on 23/03/2022 by kpriyadarshan
   TYPE stkCovrage IS RECORD
   (ID                 STACK_ELECTION.ID%TYPE,
    ELCT_ID            STACK_ELECTION.ELCT_ID%TYPE,
