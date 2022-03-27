@@ -1,0 +1,39 @@
+CREATE OR REPLACE PACKAGE COMMON_TYPE
+AS
+  TYPE stkCovrage IS RECORD
+  (ID                 STACK_ELECTION.ID%TYPE,
+   ELCT_ID            STACK_ELECTION.ELCT_ID%TYPE,
+   BEGINS             STACK_ELECTION.BEGINS%TYPE,
+   ENDS               STACK_ELECTION.ENDS%TYPE,
+   STK_ELECT_AMT      STACK_ELECTION.STK_ELECT_AMT%TYPE,
+   STK_ELECT_AVA_BAL  STACK_ELECTION.STK_ELECT_AVA_BAL%TYPE
+  );
+  
+  TYPE t_stkCovrage IS TABLE OF stkCovrage INDEX BY PLS_INTEGER;
+  stkCovrageRec   t_stkCovrage;
+  
+  TYPE electCoverage IS RECORD
+  (ID                 ELECTION.ID%TYPE,
+   BEGINS             ELECTION.BEGINS%TYPE,
+   ENDS               ELECTION.ENDS%TYPE,
+   ELECT_AMT          ELECTION.ELECT_AMT%TYPE,
+   ELECT_AVA_BAL      ELECTION.ELECT_AVA_BAL%TYPE,
+   ELECT_DEPOSIT_BAL  ELECTION.ELECT_DEPOSIT_BAL%TYPE,
+   CAN_PAY_UPTO_ELECT ELECTION.CAN_PAY_UPTO_ELECT%TYPE,
+   STKINFOREC         stkCovrage
+  );
+  
+  TYPE t_electCoverage IS TABLE OF electCoverage INDEX BY PLS_INTEGER;
+  electCoverageRec   t_electCoverage;
+  
+  TYPE claimInfo IS RECORD
+  (clm_amt        NUMBER,
+   clm_denied_amt NUMBER,
+   denial_reason  VARCHAR2(250)
+  );
+  
+  TYPE t_claimInfo IS TABLE OF claimInfo INDEX BY PLS_INTEGER;
+  claimRec         t_claimInfo;
+  
+END COMMON_TYPE;
+/
