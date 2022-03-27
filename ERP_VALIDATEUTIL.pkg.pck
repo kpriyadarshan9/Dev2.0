@@ -1,6 +1,6 @@
 CREATE OR REPLACE PACKAGE ERP_VALIDATEUTIL
 AS
- 
+  -- Created on 28/03/2022 by Kpriyadarshan
   FUNCTION getElection(inElctId  IN  Election.Id%TYPE) RETURN common_type.t_electCoverage;
                        
   FUNCTION getElectionAmt(inElectId IN Election.Id%TYPE) RETURN NUMBER;
